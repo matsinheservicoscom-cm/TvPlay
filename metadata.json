@@ -1,0 +1,8 @@
+{
+  "name": "TxopelaTv",
+  "description": "TxopelaTv - O seu mundo em movimento. Plataforma digital de transmissão televisiva ao vivo e portal de notícias.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
