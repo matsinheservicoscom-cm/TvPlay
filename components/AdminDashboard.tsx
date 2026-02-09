@@ -1,7 +1,5 @@
-
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-// Added 'Tv' to the lucide-react imports to resolve the missing icon reference
 import { Plus, Settings, Users, Radio, FileText, Layout, Bell, Shield, LogOut, Trash2, Copy, CheckCircle, Calendar, X, User, Tv } from 'lucide-react';
 import { MOCK_STATS } from '../constants';
 import { NewsItem, Program, User as UserType } from '../types';
@@ -32,7 +30,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [streamUrl, setStreamUrl] = useState(currentStreamUrl);
   const [activeTab, setActiveTab] = useState<'overview' | 'stream' | 'news' | 'users' | 'programs'>('overview');
   
-  // Forms state
   const [newNews, setNewNews] = useState<Partial<NewsItem>>({
     category: 'Sociedade',
     date: new Date().toISOString().split('T')[0]
@@ -105,7 +102,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-white">
-      {/* Sidebar Admin */}
       <aside className="w-72 bg-zinc-900 border-r border-zinc-800 p-6 flex flex-col hidden md:flex sticky top-0 h-screen">
         <div className="flex items-center gap-3 mb-10 cursor-pointer" onClick={onExit}>
           <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
@@ -137,7 +133,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <FileText className="w-5 h-5" /> Portal de Notícias
           </button>
           <button onClick={() => setActiveTab('programs')} className={`w-full flex items-center gap-3 p-3 rounded-lg transition ${activeTab === 'programs' ? 'bg-red-600 shadow-lg shadow-red-600/20' : 'hover:bg-zinc-800 text-zinc-400 hover:text-white'}`}>
-            <Calendar className="w-5 h-5" /> Calendar Grade TV
+            <Calendar className="w-5 h-5" /> Grade TV
           </button>
         </nav>
 
@@ -151,7 +147,6 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 p-8 overflow-y-auto">
         <header className="flex justify-between items-center mb-10">
           <div>

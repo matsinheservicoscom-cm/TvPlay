@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
 import { Lock, User, Mail, ArrowRight, ShieldCheck, LogIn, UserPlus } from 'lucide-react';
+import { User as UserType } from '../types';
 
 interface AdminAuthProps {
-  onLoginSuccess: (user: any) => void;
+  onLoginSuccess: (user: UserType) => void;
   onBack: () => void;
 }
 
@@ -21,13 +21,14 @@ const AdminAuth: React.FC<AdminAuthProps> = ({ onLoginSuccess, onBack }) => {
     
     if (isLogin) {
       // Simulação de Login
-      const savedUser = localStorage.getItem('txopela_admin');
-      if (savedUser) {
-        const user = JSON.parse(savedUser);
-        if (user.email === formData.email && formData.password === 'admin123') { // Senha mock
+      const savedUserStr = localStorage.getItem('txopela_admin');
+      if (savedUserStr) {
+        const user = JSON.parse(savedUserStr);
+        // Em um sistema real, a senha não seria validada assim no front
+        if (user.email === formData.email && formData.password === 'admin123') { 
           onLoginSuccess(user);
         } else {
-          alert('Credenciais inválidas. Use o email cadastrado e a senha padrão admin123 para este demo.');
+          alert('Credenciais inválidas. Para teste, use a senha: admin123');
         }
       } else {
         alert('Nenhum administrador cadastrado. Por favor, crie uma conta.');
@@ -39,14 +40,14 @@ const AdminAuth: React.FC<AdminAuthProps> = ({ onLoginSuccess, onBack }) => {
         alert('As senhas não coincidem!');
         return;
       }
-      const newUser = {
+      const newUser: UserType = {
         id: Date.now().toString(),
         email: formData.email,
-        username: formData.username,
+        username: formData.username || 'Admin',
         role: 'admin'
       };
       localStorage.setItem('txopela_admin', JSON.stringify(newUser));
-      alert('Conta de administrador criada com sucesso! Use sua senha para entrar.');
+      alert('Conta de administrador criada com sucesso!');
       setIsLogin(true);
     }
   };
