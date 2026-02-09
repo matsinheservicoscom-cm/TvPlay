@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Plus, Settings, Users, Radio, FileText, Layout, Bell, Shield, LogOut, Trash2, Copy, CheckCircle, Calendar, X, User, Tv } from 'lucide-react';
@@ -102,6 +103,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-white">
+      {/* Sidebar Admin */}
       <aside className="w-72 bg-zinc-900 border-r border-zinc-800 p-6 flex flex-col hidden md:flex sticky top-0 h-screen">
         <div className="flex items-center gap-3 mb-10 cursor-pointer" onClick={onExit}>
           <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
@@ -147,6 +149,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       </aside>
 
+      {/* Main Content */}
       <main className="flex-1 p-8 overflow-y-auto">
         <header className="flex justify-between items-center mb-10">
           <div>
@@ -232,7 +235,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 <ul className="text-xs text-zinc-400 space-y-3">
                   <li className="flex gap-2">
                     <span className="text-red-600 font-black">01.</span>
-                    No OBS, vá em Configurações > Transmissão e selecione "Personalizado".
+                    No OBS, vá em Configurações &gt; Transmissão e selecione "Personalizado".
                   </li>
                   <li className="flex gap-2">
                     <span className="text-red-600 font-black">02.</span>
